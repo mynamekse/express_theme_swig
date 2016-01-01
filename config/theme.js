@@ -15,7 +15,8 @@
 //     app.set('view engine', 'jade');
 //   }
 // }
-module.exports={
+
+var theme={
   path:[],
   isSetView:false,
   setApp:function(app){
@@ -38,6 +39,9 @@ module.exports={
     this.app.set('view engine', 'jade');
   }
 }
+
+
+module.exports=theme;
 
 // module.exports = function (app,path) {
 //   app.set('views', path);
