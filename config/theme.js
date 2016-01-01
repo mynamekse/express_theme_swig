@@ -15,7 +15,7 @@
 //     app.set('view engine', 'jade');
 //   }
 // }
-
+var swig = require('swig'),people;
 var theme={
   path:[],
   isSetView:false,

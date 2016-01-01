@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./modules/users/routes');
+var test= require('./config/test');
 // require('./config/test.js')();
 
 
