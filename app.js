@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./modules/users/routes');
-
+require('./config/test.js')();
 
 
 // view engine setup
@@ -24,6 +24,12 @@ app.use(cookieParser());
 
 app.disable('view cache');
 var config_theme = require("./config/theme");
+config_theme.setApp(app);
+config_theme.addPath(path.join(__dirname, 'views'));
+config_theme.addPath(path.join(__dirname, 'modules/users'));
+config_theme.setEngine();
+config_theme.end();
+
 
 // var config = new Config(app,mypath);
 
@@ -36,9 +42,16 @@ var config_theme = require("./config/theme");
 app.use('/', routes);
 app.use('/users', users);
 // app.set('views', path.join(__dirname, 'modules/users'));
-config_theme.setTheme(app, path.join(__dirname, 'modules/users'));
-app.set('views', path.join(__dirname, 'views'));
+
+
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+// app.set('views', path.join(__dirname, 'modules/users'));
 // var config = require('./config/
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
