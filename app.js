@@ -19,27 +19,31 @@ var users = require('./modules/users/routes');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 
 
 
-var  swig = require('swig'),people;
-  app.engine('html', swig.renderFile);
-
-  app.set('view engine', 'html');
-  app.set('view cache', false);
-// To disable Swig's cache, do the following:
-swig.setDefaults({ cache: false });
-
-
- app.disable('view cache');
+ var swig = require('swig');
+// app.engine('html', swig.renderFile);
+//
+// app.set('view engine', 'html');
+// app.set('view cache', false);
+// // To disable Swig's cache, do the following:
+// swig.setDefaults({
+//   cache: false
+// });
+// //
+//
+//  app.disable('view cache');
 var config_theme = require("./config/theme");
-// config_theme.setApp(app);
-// config_theme.addPath(path.join(__dirname, 'views'));
+config_theme.setApp(app);
+config_theme.addPath(path.join(__dirname, 'views'));
 // config_theme.addPath(path.join(__dirname, 'modules/users'));
-// config_theme.setEngine();
-// config_theme.end();
+config_theme.setEngine(swig);
+config_theme.end();
 
 
 // var config = new Config(app,mypath);
@@ -64,10 +68,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.set('views', path.join(__dirname, 'modules/users'));
 // var config = require('./config/
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // error handlers
@@ -75,23 +79,23 @@ app.use(function (req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 

@@ -8,5 +8,9 @@
 {% endblock %}
 
 {% block content %}
-<p>This is just an gff page.</p>
+<h1>{{message}}</h1>
+<h2>{{ error.status}}</h2>
+<pre>
+  {{error.stack}}
+</pre>
 {% endblock %}

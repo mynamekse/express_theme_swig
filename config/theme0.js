@@ -15,17 +15,16 @@
 //     app.set('view engine', 'jade');
 //   }
 // }
-// var app=require('express');
-// var  swig = require('swig'),people;
-//   app.engine('html', swig.renderFile);
-//
-//   app.set('view engine', 'html');
-//   app.set('view cache', false);
-// // To disable Swig's cache, do the following:
-// swig.setDefaults({ cache: false });
-//
-//
-//  app.disable('view cache');
+var app = require('express')(),
+  swig = require('swig'),
+  people;
+  app.engine('html', swig.renderFile);
+
+  app.set('view engine', 'html');
+  app.set('view cache', false);
+// To disable Swig's cache, do the following:
+swig.setDefaults({ cache: false });
+
 
 
 var theme={
@@ -34,12 +33,12 @@ var theme={
   setApp:function(app){
     this.app=app;
   },
-  setEngine:function(engine){
-    this.app.engine('html', engine.renderFile);
-    this.app.set('view cache', false);
-      engine.setDefaults({ cache: false });
-      this.app.set('view engine', 'html');
-      this.app.engine('html', engine.renderFile);
+  setEngine:function(){
+    // this.app.engine('html', swig.renderFile);
+    // this.app.set('view cache', false);
+    //   swig.setDefaults({ cache: false });
+    //   this.app.set('view engine', 'html');
+    //   this.app.engine('html', swig.renderFile);
   },
   addPath:function(path){
     this.path.push(path);
@@ -47,6 +46,9 @@ var theme={
 
   end:function(){
     app=this.app;
+
+
+
     for (index = 0; index < this.path.length; ++index) {
       app.set('views',this.path[index]);
       // console.log('set view'+index + new Date().getSeconds());
@@ -55,9 +57,7 @@ var theme={
   }
 }
 
-theme.prototype=function(ddd){
-  console.log("DDDdd");
-}
+
 module.exports=theme;
 
 // module.exports = function (app,path) {
