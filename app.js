@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./modules/users/routes');
-var test= require('./config/test');
+// var test= require('./config/test');
 // require('./config/test.js')();
 
 
@@ -23,13 +23,23 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 
-app.disable('view cache');
+
+var  swig = require('swig'),people;
+  app.engine('html', swig.renderFile);
+
+  app.set('view engine', 'html');
+  app.set('view cache', false);
+// To disable Swig's cache, do the following:
+swig.setDefaults({ cache: false });
+
+
+ app.disable('view cache');
 var config_theme = require("./config/theme");
-config_theme.setApp(app);
-config_theme.addPath(path.join(__dirname, 'views'));
-config_theme.addPath(path.join(__dirname, 'modules/users'));
-config_theme.setEngine();
-config_theme.end();
+// config_theme.setApp(app);
+// config_theme.addPath(path.join(__dirname, 'views'));
+// config_theme.addPath(path.join(__dirname, 'modules/users'));
+// config_theme.setEngine();
+// config_theme.end();
 
 
 // var config = new Config(app,mypath);
@@ -50,7 +60,7 @@ app.use('/users', users);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// app.disable('view cache');
 
 // app.set('views', path.join(__dirname, 'modules/users'));
 // var config = require('./config/

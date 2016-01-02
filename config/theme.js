@@ -15,7 +15,18 @@
 //     app.set('view engine', 'jade');
 //   }
 // }
-var swig = require('swig'),people;
+var app = require('express')(),
+  swig = require('swig'),
+  people;
+  app.engine('html', swig.renderFile);
+
+  app.set('view engine', 'html');
+  app.set('view cache', false);
+// To disable Swig's cache, do the following:
+swig.setDefaults({ cache: false });
+
+
+
 var theme={
   path:[],
   isSetView:false,
@@ -23,8 +34,11 @@ var theme={
     this.app=app;
   },
   setEngine:function(){
-      this.app.set('view engine', 'jade');
-
+    // this.app.engine('html', swig.renderFile);
+    // this.app.set('view cache', false);
+    //   swig.setDefaults({ cache: false });
+    //   this.app.set('view engine', 'html');
+    //   this.app.engine('html', swig.renderFile);
   },
   addPath:function(path){
     this.path.push(path);
@@ -32,11 +46,14 @@ var theme={
 
   end:function(){
     app=this.app;
+
+
+
     for (index = 0; index < this.path.length; ++index) {
       app.set('views',this.path[index]);
-      console.log('set view'+index + new Date().getSeconds());
+      // console.log('set view'+index + new Date().getSeconds());
     }
-    this.app.set('view engine', 'jade');
+    // this.app.set('view engine', 'jade');
   }
 }
 
