@@ -8,8 +8,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./modules/users/routes');
- // var test= require('./config/test')({'ddd':'dd'});
+// var test= require('./config/test');
 // require('./config/test.js')();
+
 
 // view engine setup
 
@@ -25,7 +26,7 @@ app.use(cookieParser());
 
 
 
-
+ var swig = require('swig');
 // app.engine('html', swig.renderFile);
 //
 // app.set('view engine', 'html');
@@ -37,14 +38,13 @@ app.use(cookieParser());
 // //
 //
 //  app.disable('view cache');
-var config_theme = new require("./config/theme")(app);
-
-
-console.log(config_theme);
-// config_theme();
-
-
+var config_theme = require("./config/theme");
+config_theme.setApp(app);
+config_theme.addPath(path.join(__dirname, 'views'));
 // config_theme.addPath(path.join(__dirname, 'modules/users'));
+config_theme.setEngine(swig);
+config_theme.end();
+
 
 // var config = new Config(app,mypath);
 
