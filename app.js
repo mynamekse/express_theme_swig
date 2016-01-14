@@ -26,7 +26,6 @@ app.use(cookieParser());
 
 
 
- var swig = require('swig');
 // app.engine('html', swig.renderFile);
 //
 // app.set('view engine', 'html');
@@ -38,12 +37,16 @@ app.use(cookieParser());
 // //
 //
 //  app.disable('view cache');
-var config_theme = require("./config/theme");
-config_theme.setApp(app);
-config_theme.addPath(path.join(__dirname, 'views'));
-// config_theme.addPath(path.join(__dirname, 'modules/users'));
-config_theme.setEngine(swig);
-config_theme.end();
+// var config_theme = require("./config/theme");
+var views_path=path.join(__dirname, 'views')
+
+require("./config/test")(app,views_path);
+  // console.log(path.join(__dirname, 'views'));
+// config_theme.setApp(app);
+// config_theme.addPath(path.join(__dirname, 'views'));
+// // config_theme.addPath(path.join(__dirname, 'modules/users'));
+// config_theme.setEngine(swig);
+// config_theme.end();
 
 
 // var config = new Config(app,mypath);

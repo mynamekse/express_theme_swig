@@ -55,9 +55,7 @@ var theme={
   }
 }
 
-theme.prototype=function(ddd){
-  console.log("DDDdd");
-}
+
 module.exports=theme;
 
 // module.exports = function (app,path) {
