@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+
 var users = require('./modules/users/routes');
 // var test= require('./config/test');
 // require('./config/test.js')();
@@ -39,29 +39,24 @@ app.use(cookieParser());
 //  app.disable('view cache');
 // var config_theme = require("./config/theme");
 var views_path=path.join(__dirname, 'views')
-
-require("./config/test")(app,views_path);
-  // console.log(path.join(__dirname, 'views'));
-// config_theme.setApp(app);
-// config_theme.addPath(path.join(__dirname, 'views'));
-// // config_theme.addPath(path.join(__dirname, 'modules/users'));
-// config_theme.setEngine(swig);
-// config_theme.end();
+// require("./config/theme")({'app':app,'views_path':views_path});
+// require("./config/routes")(app);
 
 
-// var config = new Config(app,mypath);
+var nunjucks=require('nunjucks');
+// var express   = require('express');
+//     config.app.set('view engine', 'nunjucks');
+// config.app.engine('html', nunjucks.renderFile);
+//     config.app.set('views',config.views_path)
 
-// require("./config/theme")(app,path.join(__dirname, 'modules/users'));
+nunjucks.configure('views', {
+autoescape: true,
+express: app
+});
 
-// app.set('view engine', 'jade');
-// var myhello="hello";
-// module.exports.hello='ddddddddd'
-// app.set('views', path.join(__dirname, 'vapp.disable('etag');iews'));
-app.use('/', routes);
-app.use('/users', users);
-// app.set('views', path.join(__dirname, 'modules/users'));
-
-
+app.get('/', function(req, res) {
+  res.render('index.html');
+});
 
 
 

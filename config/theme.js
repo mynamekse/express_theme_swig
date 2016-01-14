@@ -1,34 +1,5 @@
-// var express = require('express');
-// var app = express();
 
-// var path = require('path');
-// module.exports(function(app, database) {
-//   console.log(app);
-//
-// });
-
-// var
-// console.log(module.exports.hello);
-// module.exports = {
-//   setTheme:function(app,path){
-//     app.set('views', path);
-//     app.set('view engine', 'jade');
-//   }
-// }
-// var app=require('express');
-// var  swig = require('swig'),people;
-//   app.engine('html', swig.renderFile);
-//
-//   app.set('view engine', 'html');
-//   app.set('view cache', false);
-// // To disable Swig's cache, do the following:
-// swig.setDefaults({ cache: false });
-//
-//
-//  app.disable('view cache');
-
-
-var theme={
+var theme_swig={
   path:[],
   isSetView:false,
   setApp:function(app){
@@ -56,9 +27,33 @@ var theme={
 }
 
 
-module.exports=theme;
 
-// module.exports = function (app,path) {
-//   app.set('views', path);
-//   app.set('view engine', 'jade');
-// };
+module.exports=function(config){
+  function theme_swig_up(){
+    var swig = require('swig');
+    theme_swig.setApp(config.app);
+    theme_swig.addPath(config.views_path);
+    theme_swig.setEngine(swig);
+    theme_swig.end();
+  }
+//
+  function themeddd(){
+    var nunjucks=require('nunjucks');
+    var express   = require('express');
+  //     config.app.set('view engine', 'nunjucks');
+  // config.app.engine('html', nunjucks.renderFile);
+  //     config.app.set('views',config.views_path)
+
+    nunjucks.configure('views', {
+    autoescape: true,
+    express: config.app
+});
+}
+// themeddd();
+  // themeddd();
+
+
+  //  theme_swig_up();
+  //  var path = require('path');
+
+}

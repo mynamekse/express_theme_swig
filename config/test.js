@@ -28,16 +28,15 @@ var theme_swig={
 
 
 
-module.exports=function(app,path){
-  // var theme=require('./theme');
-
+module.exports=function(config){
   function theme_swig_up(){
     var swig = require('swig');
-    theme_swig.setApp(app);
-    theme_swig.addPath(path);
+    theme_swig.setApp(config.app);
+    theme_swig.addPath(config.views_path);
     theme_swig.setEngine(swig);
     theme_swig.end();
   }
+
    theme_swig_up();
   //  var path = require('path');
 
