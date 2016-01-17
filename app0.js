@@ -51,7 +51,7 @@ var nunjucks=require('nunjucks');
 // config.app.engine('html', nunjucks.renderFile);
 //     config.app.set('views',config.views_path)
 
-nunjucks.configure('hello', {
+nunjucks.configure('views', {
 autoescape: true,
 express: app
 });
