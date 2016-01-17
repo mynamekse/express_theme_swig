@@ -40,7 +40,7 @@ app.use(cookieParser());
 //  app.disable('view cache');
 var config_theme = require("./config/theme");
 config_theme.setApp(app);
-config_theme.addPath(path.join(__dirname, 'views'));
+config_theme.addPath(path.join(__dirname, 'hello'));
 // config_theme.addPath(path.join(__dirname, 'modules/users'));
 config_theme.setEngine(swig);
 config_theme.end();
