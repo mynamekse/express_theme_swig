@@ -42,8 +42,6 @@ var views_path=path.join(__dirname, 'views')
 // require("./config/theme")({'app':app,'views_path':views_path});
 // require("./config/routes")(app);
 
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 var nunjucks=require('nunjucks');
 // var express   = require('express');
@@ -51,24 +49,18 @@ var nunjucks=require('nunjucks');
 // config.app.engine('html', nunjucks.renderFile);
 //     config.app.set('views',config.views_path)
 
-nunjucks.configure('themes/normal', {
-autoescape: true,
-express: app
+nunjucks.configure('views', {
+  autoescape: true,
+  express   : app
 });
+
+
 
 app.get('/', function(req, res) {
-  res.render('themes/normal/static/index.html', {
-    title : 'My First Nunjucks Page',
-    items : [
-      { name : 'item #1' },
-      { name : 'item #2' },
-      { name : 'item #3' },
-      { name : 'item #4' },
-    ]
-  });
+   console.log('d');
 });
 
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // app.disable('view cache');
 
