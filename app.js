@@ -37,10 +37,22 @@ app.use(cookieParser());
 // //
 //
 //  app.disable('view cache');
+<<<<<<< HEAD
 // var config_theme = require("./config/theme");
 var views_path=path.join(__dirname, 'views')
 // require("./config/theme")({'app':app,'views_path':views_path});
 // require("./config/routes")(app);
+=======
+var config_theme = require("./config/theme");
+config_theme.setApp(app);
+config_theme.addPath(path.join(__dirname, 'hello'));
+// config_theme.addPath(path.join(__dirname, 'modules/users'));
+config_theme.setEngine(swig);
+config_theme.end();
+
+
+// var config = new Config(app,mypath);
+>>>>>>> master
 
 app.use(express.static(path.join(__dirname, 'public')));
 
