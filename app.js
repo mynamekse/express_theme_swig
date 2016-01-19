@@ -51,13 +51,13 @@ var nunjucks=require('nunjucks');
 // config.app.engine('html', nunjucks.renderFile);
 //     config.app.set('views',config.views_path)
 
-nunjucks.configure('themes/normal', {
+nunjucks.configure('themes/normal/static', {
 autoescape: true,
 express: app
 });
 
 app.get('/', function(req, res) {
-  res.render('themes/normal/static/index.html', {
+  res.render(__dirname+'/themes/normal/static/index.html', {
     title : 'My First Nunjucks Page',
     items : [
       { name : 'item #1' },
