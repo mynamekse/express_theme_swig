@@ -36,8 +36,8 @@ var theme={
   },
   setEngine:function(engine){
     this.app.engine('html', engine.renderFile);
-    this.app.set('view cache', false);
-      engine.setDefaults({ cache: false });
+    // this.app.set('view cache', false);
+    //   engine.setDefaults({ cache: false });
       this.app.set('view engine', 'html');
       this.app.engine('html', engine.renderFile);
   },
@@ -47,7 +47,7 @@ var theme={
 
   end:function(){
     app=this.app;
-    for (index = 0; index < this.path.length; ++index) {
+    for (index = 0; index < this.path.length; index++) {
       app.set('views',this.path[index]);
       // console.log('set view'+index + new Date().getSeconds());
     }
