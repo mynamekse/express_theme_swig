@@ -1,7 +1,25 @@
-// var express = require('express');
-var app = require('./api/factory').createApp();
-var express=require('express');
-var path=require('path');
+
+require('./api/services/factory');
+var config=getConfig('d1');
+var express = require('express');
+var app=null;
+config('d1',function(){
+   app = require('./api/factory').get('app');
+});
+
+config('d2',function(){
+   app = Factory.getApp();
+});
+// require('./api/services/factory');
+// var app = Factory.getApp();
+// console.log(appb);
+// var express=require('express');
+
+
+
+var path=require("path");
+
+
 process.env.NODE_ENV='development';
 app.set("ROOT.PATH",__dirname);
 // var path = require('path');

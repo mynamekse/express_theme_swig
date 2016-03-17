@@ -13,7 +13,11 @@ router.get('/forums', function(req, res, next) {
 
   //  app.set('views', path.join(__dirname));
   // app.set('views', path.join(__dirname, 'views'));
+
+
    res.render('index.forums.html',{time:new Date()});
 });
+var forumsCtr=Factory.getController('forums','test');
+router.get('/test',forumsCtr.renderIndex);
 
 module.exports = router;
