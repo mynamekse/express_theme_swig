@@ -1,6 +1,6 @@
 var path = require('path');
 var express = require('express');
-var app = require('../api/factory').createApp();
+var app = Factory.getApp();
 var morgan = require('morgan');
 var compression = require('compression');
 var nunjucks = require('nunjucks');
@@ -13,14 +13,17 @@ if (process.env.NODE_ENV === 'development') {
   app.use(compression());
 
 }
+var appPath={
+  "ROOT":app.get("PATH.ROOT")
 
+};
 var viewPaths=[
-  path.join(app.get("ROOT.PATH"), 'themes/Materialize')
+  path.join(appPath.ROOT, 'themes/Materialize')
 ]
 
-viewPaths.push(path.join(app.get("ROOT.PATH"), 'api/app/forums/views'));
-viewPaths.push(path.join(app.get("ROOT.PATH"), 'api/app/users/views'));
-
+// viewPaths.push(path.join((appPath.ROOT, 'api/app/forums/views')));
+var v=path.join((appPath.ROOT, 'core/app/user/views'));
+viewPaths.push(v);
 
 
 

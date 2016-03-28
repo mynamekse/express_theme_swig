@@ -2,7 +2,7 @@
 
 var router = require('express').Router();
 var path = require('path');
-var usersControlller=require('./controller/users.js');
+var usersControlller=require('./controllers/users.js');
 /* GET users listing. */
 router.get('/users',usersControlller.hello);
 

@@ -1,43 +1,21 @@
 
 require('./api/services/factory');
-var config=getConfig('d1');
+
 var express = require('express');
-var app=null;
-config('d1',function(){
-   app = require('./api/factory').get('app');
-});
-
-config('d2',function(){
-   app = Factory.getApp();
-});
-// require('./api/services/factory');
-// var app = Factory.getApp();
-// console.log(appb);
-// var express=require('express');
-
+var app=Factory.getApp();
 
 
 var path=require("path");
 
 
 process.env.NODE_ENV='development';
-app.set("ROOT.PATH",__dirname);
-// var path = require('path');
-// var favicon = require('serve-favicon');
-// var logger = require('morgan');
-// var cookieParser = require('cookie-parser');
-// var bodyParser = require('body-parser');
-
-
-
-
-
-
-
+app.set("PATH.ROOT",__dirname);
+var appRootPath=app.get("PATH.ROOT");
+app.use(express.static(path.join(appRootPath, 'public')));
 require('./config/middleware');
 require('./config/views');
 require('./config/routes')(app);
-app.use(express.static(path.join(app.get("ROOT.PATH"), 'public')));
+
 // require('./config/middleware');
 // console.log(path.join(__dirname, 'views'));
 
