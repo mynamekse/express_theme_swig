@@ -1,15 +1,8 @@
-// Factory={
-//   getApp:function(){
-//       return app;
-//   }
-// }
-Factory = function Factory() {
-
-}
+var fs = require('fs');
 var express = require('express');
-var app = express();
-var rootPath = app.get("PATH.ROOT");
 
+Factory = function Factory() {};
+var app = express();
 Factory.getApp = function() {
   return app;
 }
@@ -17,6 +10,17 @@ Factory.getApp = function() {
 // Factory.getEnv={};
 // Factory.getEnv.rootPath=Factory.getApp().get("PATH.ROOT");
 
+Factory.getService = function(name,callback) {
+    var helper = require('./' + name); // Do something
+    var err='';
+    if (!helper) {
+      err=new Error("helper not defined");
+    }
+    if (!callback) {
+      return helper;
+    }
+    return callback(err,helper);
+}
 
 
 Factory.getRoute = function(name) {
@@ -28,13 +32,14 @@ Factory.getRoute = function(name) {
   }
 };
 
+
 Factory.getSubApp = function(name) {
-  try {
-    var routes = require(app.get("PATH.ROOT") + "/core/app/" + name + '/app');
+    var root_path = Factory.getService('helpers').Path.root_path;
+    var path_app=root_path + "/core/app/" + name + '/app';
+    // console.log(path_app);
+    var routes = require(path_app);
     return routes;
-  } catch (e) {
-    throw new Error(e);
-  }
+
 };
 
 Factory.getController = function(appName, controllerName) {

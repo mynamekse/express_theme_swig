@@ -5,7 +5,7 @@ module.exports = function(app) {
   var viewPaths = [
     path.join(root_path, 'themes/Materialize')
   ]
-  viewPaths.push(path.join(root_path, 'core/app/user/views'));
+  viewPaths.push(path.join(root_path, 'core/app/forum/views'));
   app.set('views', viewPaths);
   app.set('view engine', 'html');
   //
@@ -14,7 +14,5 @@ module.exports = function(app) {
     express: app,
     noCache: true
   });
-
-  
   return app;
 }

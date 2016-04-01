@@ -19,7 +19,9 @@ router.get('/forums', function(req, res, next) {
 
    res.render('index.forums.html',{time:new Date()});
 });
-var forumsCtr=Factory.getController('forums','test');
-router.get('/test',forumsCtr.renderIndex);
+
+var forumsCtr=require('./controllers/forum.js');
+// var forumsCtr=Factory.getController('forum','test');
+router.get('/forum',forumsCtr.renderIndex);
 
 module.exports = router;

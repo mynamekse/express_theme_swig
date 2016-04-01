@@ -23,6 +23,6 @@ module.exports=function(app){
   //   // console.log('form oute' + req.get('host'));
   //   next();
   // });
-  app.use(forumApp);
+app.use(forumApp);
   app.use(userApp);
 }

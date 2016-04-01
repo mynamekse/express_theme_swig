@@ -1,5 +1,5 @@
 
-require('./api/services/factory');
+require('./core/api/services/factory');
 
 var express = require('express');
 var app=Factory.getApp();
@@ -10,11 +10,15 @@ var path=require("path");
 
 process.env.NODE_ENV='development';
 app.set("PATH.ROOT",__dirname);
+// var helpers=Factory.getService('helpers');
+// helpers.Path.root_path=__dirname;
 var appRootPath=app.get("PATH.ROOT");
+
+// console.log(Factory.getApp().get("PATH.ROOT"));
 app.use(express.static(path.join(appRootPath, 'public')));
-require('./config/middleware');
-require('./config/views');
-require('./config/routes')(app);
+require('./core/config/middleware');
+ require('./core/config/views');
+require('./core/config/routes')(app);
 
 // require('./config/middleware');
 // console.log(path.join(__dirname, 'views'));
