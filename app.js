@@ -1,5 +1,5 @@
 
-require('./core/api/services/factory');
+require('./api/services/factory');
 
 var express = require('express');
 var app=Factory.getApp();
@@ -17,7 +17,7 @@ var appRootPath=app.get("PATH.ROOT");
 // console.log(Factory.getApp().get("PATH.ROOT"));
 app.use(express.static(path.join(appRootPath, 'public')));
 require('./core/config/middleware');
- require('./core/config/views');
+ require('./core/config/view');
 require('./core/config/routes')(app);
 
 // require('./config/middleware');

@@ -19,15 +19,14 @@ var appPath={
 
 };
 var viewPaths=[
-  path.join(appPath.ROOT, 'core/app/user/views'),
-  path.join(appPath.ROOT, 'themes/Materialize')
+    path.join(appPath.ROOT, 'themes/Materialize'),
+    path.join(appPath.ROOT, 'themes/Materialize/user/views')
+
 ]
 
 
 
 // viewPaths.push(path.join((appPath.ROOT, 'api/app/forums/views')));
-
-console.log(viewPaths);
 
 
 
