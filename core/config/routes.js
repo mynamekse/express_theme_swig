@@ -3,6 +3,7 @@
 // var forumsRoutes=Factory.core.getRoute('forum');
 // var userRoutes=Factory.core.getRoute('user');
 var fs = require('fs');
+var routeHelper=require('../api/helpers/route');
 //  const userApp=Factory.getSubApp('user');
 // const forumApp=Factory.getSubApp('forum');
 
@@ -16,14 +17,14 @@ var helper = Factory.core.getService('helpers', function(err, helper) {
 
 // console.log(helper);
 module.exports = function(app) {
-  var routes = fs.readdirSync(path_root + '/core/modules');
-  routes.forEach(function(routeName) {
-    var route = Factory.core.getRoute(routeName);
-    if (typeof route !=='function'){
-      throw new Error('route  '+routeName +' not found ');
-    }
-    app.use(route);
-  });
-
+  // var routes = fs.readdirSync(path_root + '/core/modules');
+  // routes.forEach(function(routeName) {
+  //   var route = Factory.core.getRoute(routeName);
+  //   if (typeof route !=='function'){
+  //     throw new Error('route  '+routeName +' not found ');
+  //   }
+  //   app.use(route);
+  // });
+  routeHelper.collectRoute(app);
 
 }

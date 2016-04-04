@@ -47,7 +47,7 @@ Factory.getSubApp = function(name) {
 
 Factory.getController = function(appName, controllerName) {
   try {
-    var controller = require('../app/' + appName + '/controllers/' + controllerName);
+    var controller = require(app.get("PATH.ROOT")+'/modules/' + appName + '/controllers/' + controllerName);
     return controller;
   } catch (e) {
     throw new Error(e);
