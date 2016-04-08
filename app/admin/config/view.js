@@ -1,6 +1,7 @@
 var path = require('path');
 var express = require('express');
 // var app = Factory.getApp();
+var collection = rootRequire('./core/api/helpers/collection').collection();
 var morgan = require('morgan');
 var compression = require('compression');
 var nunjucks = require('nunjucks');
@@ -23,9 +24,10 @@ module.exports = function(app) {
 
   };
   var viewPaths = [
-    path.join(__base, 'themes/web/Materialize'),
+    path.join(appPath.ROOT, 'themes/Materialize'),
     // path.join(appPath.ROOT, 'themes/Materialize/user/views'),
-    // path.join(appPath.ROOT, 'themes/Materialize/login/views')
+    path.join(appPath.ROOT, 'themes/Materialize/modules/login/views'),
+    path.join(appPath.ROOT, 'themes/Materialize/modules/static/views')
 
   ]
 
@@ -43,7 +45,7 @@ module.exports = function(app) {
     express: app,
     noCache: true
   });
-
+collection.setCollection('nunjucks',nunjucks);
 }
 
 // app.set('views', views);

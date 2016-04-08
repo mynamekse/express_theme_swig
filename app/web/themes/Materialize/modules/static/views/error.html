@@ -1,10 +1,10 @@
-{% extends 'layout.html' %}
+{% extends '../layout.html' %}
 
 {% block title %}My Page{% endblock %}
 
 {% block head %}
-
-  <!-- <link rel="stylesheet" href="custom.css"> -->
+  {% parent %}
+  <link rel="stylesheet" href="custom.css">
 {% endblock %}
 
 {% block content %}

@@ -2,12 +2,11 @@ var express = require('express');
 var web = express();
 var nunjucks = require('nunjucks');
 var collection = rootRequire('./core/api/helpers/collection').collection();
-var userRouter=require('./modules/users/routes');
 
 
 web.get('/', function(req, res, next) {
   var _data = {
-    page_title: 'Front end'
+    page_title: 'admin page'
   }
 
   res.render('static.index.html', {
@@ -15,9 +14,9 @@ web.get('/', function(req, res, next) {
   });
 });
 
-web.get('/ddd', function(req, res, next) {
+web.get('/login', function(req, res, next) {
   var _data = {
-    page_title: 'Lddddddddddddddogin'
+    page_title: 'Login'
   }
   var dd = '';
 
@@ -33,7 +32,7 @@ web.get('/ddd', function(req, res, next) {
   // }
 
 });
-web.use(userRouter);
+
 
 web.set("PATH.ROOT", __dirname);
 require('./config/view')(web);
