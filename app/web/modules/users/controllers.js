@@ -1,17 +1,21 @@
-var user={
-  login:function(req,res){
+var authenController = {
+  login: function(req, res) {
     var _data = {
-      page_title: 'Login'
+      page_title: 'ass',
+      b2: 'ddddddddddd'
     }
     var dd = '';
 
-      res.render('login.index.html', {
-        data: _data
-      });
+    res.render('login.index.html', {
+      data: _data,
+
+
+    });
   },
-  logout:function(req,res){
+  logout: function(req, res) {
 
   }
 }
 
-module.exports.user=user;
+
+module.exports.authenCtr = authenController;

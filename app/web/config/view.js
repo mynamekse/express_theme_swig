@@ -6,17 +6,19 @@ var morgan = require('morgan');
 var compression = require('compression');
 var nunjucks = require('nunjucks');
 // app.set('views', path.join(__dirname, 'views'));
+var i=0
 module.exports = function(app) {
-
+   i=133;
 
   if (process.env.NODE_ENV === 'development') {
+
     app.use(morgan('dev'));
     app.disable('view cache');
 
   } else {
 
     app.use(compression());
-
+  
   }
 
   var appPath = {
@@ -32,10 +34,10 @@ module.exports = function(app) {
   // ]
 
   var viewPaths = [
-    path.join(__base, 'themes/web/Materialize'),
+    path.join(appPath.ROOT, 'themes/materialize'),
     // path.join(appPath.ROOT, 'themes/Materialize/user/views'),
-    path.join(__base, 'themes/web/Materialize/modules/login/views'),
-    path.join(__base, 'themes/web/Materialize/modules/static/views')
+    path.join(appPath.ROOT, 'themes/materialize/modules/login/views'),
+    path.join(appPath.ROOT, 'themes/materialize/modules/static/views')
 
   ]
 
@@ -52,7 +54,19 @@ module.exports = function(app) {
     express: app,
     noCache: true
   });
-collection.setCollection('nunjucks',nunjucks);
+
+
+  // var nunjucks=collection.getCollection('nunjucks');
+  // var dd=  nunjucks.render('static.index.html', { foo: 'bar' });
+  // console.log(dd);
+  collection.setCollection('nunjucks', nunjucks);
+
+}
+
+module.exports.getNunjucks=function(){
+
+  console.log("dddddddddddddddddddddddddddddddd"+i);
+  return "dd";
 }
 
 // app.set('views', views);

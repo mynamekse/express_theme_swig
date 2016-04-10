@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var user=require('./controllers').authenCtr;
+var authenCtr=require('./controllers').authenCtr;
 
-router.get('/login',user.login);
+router.get('/login',authenCtr.login);
 
 
 module.exports=router;
