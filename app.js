@@ -1,10 +1,10 @@
-require('./api/services/factory');
+require('./core/api/services/factory');
 require('./global');
 var collection=rootRequire('./core/api/helpers/collection').collection();
 
 var express = require('express');
 var app = Factory.getApp();
-var web = require('./web/app');
+// var web = require('./web/app');
 var path = require("path");
 // console.log(__base);
 
@@ -25,11 +25,10 @@ var appRootPath = app.get("PATH.ROOT");
 // console.log(Factory.getApp().get("PATH.ROOT"));
 app.use(express.static(path.join(appRootPath, 'public')));
 
-app.use('/',web);
+// app.use('/',web);
 require('./core/config/middleware');
 require('./core/config/view')(app);
-
-require('./core/config/routes')(app);
+app=require('./core/config/routes')(app);
 
 // require('./config/middleware');
 // console.log(path.join(__dirname, 'views'));

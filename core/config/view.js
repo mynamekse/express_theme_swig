@@ -5,10 +5,12 @@ var morgan = require('morgan');
 var compression = require('compression');
 var nunjucks = require('nunjucks');
 // app.set('views', path.join(__dirname, 'views'));
+
 module.exports = function(app) {
 
 
   if (process.env.NODE_ENV === 'development') {
+
     app.use(morgan('dev'));
     app.disable('view cache');
 
@@ -23,9 +25,10 @@ module.exports = function(app) {
 
   };
   var viewPaths = [
-    path.join(appPath.ROOT, 'themes/Materialize'),
-    path.join(appPath.ROOT, 'themes/Materialize/user/views'),
-    path.join(appPath.ROOT, 'themes/Materialize/login/views')
+    path.join(appPath.ROOT, '/core/themes/materialize'),
+      path.join(appPath.ROOT, '/core/themes/materialize/layout'),
+    path.join(appPath.ROOT, '/core/themes/materialize/user/views'),
+    path.join(appPath.ROOT, '/core/themes/materialize/login/views')
 
   ]
 

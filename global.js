@@ -1,4 +1,4 @@
-global.__base = __dirname + '/';
+global.__base = __dirname;
 
 
 global.rootRequire = function(name) {

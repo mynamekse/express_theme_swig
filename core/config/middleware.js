@@ -17,10 +17,7 @@ app.use(express.static(path.join(app.get("PATH.ROOT"), 'public')));
 //   store: new RedisStore(options),
 //   secret: 'Pro Express.js rocks!'
 // }));
-app.use('/forums',function(req,res,next){
-  console.log('dd');
-  next();
-});
+
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

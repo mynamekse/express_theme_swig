@@ -3,7 +3,7 @@
 // var forumsRoutes=Factory.core.getRoute('forum');
 // var userRoutes=Factory.core.getRoute('user');
 var fs = require('fs');
-var routeHelper=require('../api/helpers/route');
+var routeHelper=rootRequire('core/lib/helpers/route');
 //  const userApp=Factory.getSubApp('user');
 // const forumApp=Factory.getSubApp('forum');
 
@@ -26,5 +26,6 @@ module.exports = function(app) {
   //   app.use(route);
   // });
   routeHelper.collectRoute(app);
+  return app;
 
 }
