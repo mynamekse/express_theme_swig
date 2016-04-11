@@ -6,9 +6,9 @@ var morgan = require('morgan');
 var compression = require('compression');
 var nunjucks = require('nunjucks');
 // app.set('views', path.join(__dirname, 'views'));
-var i=0
+process.env.NODE_ENV='development';
 module.exports = function(app) {
-   i=133;
+
 
   if (process.env.NODE_ENV === 'development') {
 
@@ -18,7 +18,7 @@ module.exports = function(app) {
   } else {
 
     app.use(compression());
-  
+
   }
 
   var appPath = {
@@ -35,9 +35,10 @@ module.exports = function(app) {
 
   var viewPaths = [
     path.join(appPath.ROOT, 'themes/materialize'),
+    path.join(appPath.ROOT, 'themes/materialize/layouts'),
     // path.join(appPath.ROOT, 'themes/Materialize/user/views'),
-    path.join(appPath.ROOT, 'themes/materialize/modules/login/views'),
-    path.join(appPath.ROOT, 'themes/materialize/modules/static/views')
+    path.join(appPath.ROOT, 'themes/materialize/modules/user/views'),
+    // path.join(appPath.ROOT, 'themes/materialize/modules/static/views')
 
   ]
 
@@ -63,9 +64,9 @@ module.exports = function(app) {
 
 }
 
-module.exports.getNunjucks=function(){
+module.exports.getNunjucks = function() {
 
-  console.log("dddddddddddddddddddddddddddddddd"+i);
+  console.log("dddddddddddddddddddddddddddddddd" + i);
   return "dd";
 }
 

@@ -1,0 +1,43 @@
+{% extends 'page.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col s12"></div>
+</div>
+<div class="container">
+
+
+  <form name="login" method="post" action="login" class="col s12">
+
+      <div class="row">
+        <div class="input-field col offset-s2 s8">
+          <input class="validate" id="password" type="password">
+          <label for="Password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col offset-s2 s8">
+          <label for="email">Email</label>
+          <input class="validate" id="email" type="email">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col offset-s2 s8">
+          <input id="test5" type="checkbox"/>
+          <label for="test5">Red</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col offset-s2 s8">
+          <button class="btn waves-effect waves-light blue" name="action" type="submit">เข้าใช้งาน
+
+          </button>
+        </div>
+
+
+    </form>
+
+  </div>
+
+  {% endblock %}
