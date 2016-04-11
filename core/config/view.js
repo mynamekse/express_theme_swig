@@ -24,9 +24,16 @@ module.exports = function(app) {
     "ROOT": app.get("PATH.ROOT")
 
   };
+
+  var themes={
+    'materialize':[
+
+    ],
+    'bookstart':[]
+  }
   var viewPaths = [
     path.join(appPath.ROOT, '/core/themes/materialize'),
-      path.join(appPath.ROOT, '/core/themes/materialize/layout'),
+    path.join(appPath.ROOT, '/core/themes/materialize/layout'),
     path.join(appPath.ROOT, '/core/themes/materialize/user/views'),
     path.join(appPath.ROOT, '/core/themes/materialize/login/views')
 

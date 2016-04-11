@@ -25,6 +25,7 @@ module.exports = function(app) {
   //   }
   //   app.use(route);
   // });
+
   routeHelper.collectRoute(app);
   return app;
 

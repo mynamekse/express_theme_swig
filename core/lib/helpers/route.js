@@ -9,4 +9,14 @@ module.exports.collectRoute=function(app){
     }
     app.use(route);
   });
+ var routes = fs.readdirSync(app.get('PATH.ROOT') + '/modules');
+
+  routes.forEach(function(routeName) {
+
+    var route = rootRequire('./modules/'+routeName+"/routes");
+    if (typeof route !=='function'){
+      throw new Error('route  '+routeName +' not found ');
+    }
+    app.use(route);
+  });
 }
