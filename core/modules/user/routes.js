@@ -11,7 +11,7 @@ function link(route_name,callback){
 }
 
 router.get('/about', link('name',function(req,res){
-  res.render('user.index.html');
+  res.render('layout.html');
 
 }));
 

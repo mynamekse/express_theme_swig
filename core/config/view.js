@@ -25,19 +25,21 @@ module.exports = function(app) {
 
   };
 
-  var themes={
-    'materialize':[
-
+  var themes = {
+    'materialize': [
+      '/core/themes/materialize',
+      '/core/themes/materialize/layout',
+      '/core/themes/materialize/user/views',
+      '/core/themes/materialize/login/views'
     ],
-    'bookstart':[]
+    'webbootstrap': ['/core/themes/webbootstrap','/core/themes/webbootstrap/layouts' ]
   }
-  var viewPaths = [
-    path.join(appPath.ROOT, '/core/themes/materialize'),
-    path.join(appPath.ROOT, '/core/themes/materialize/layout'),
-    path.join(appPath.ROOT, '/core/themes/materialize/user/views'),
-    path.join(appPath.ROOT, '/core/themes/materialize/login/views')
+  var viewPaths = []
 
-  ]
+  themes.webbootstrap.forEach(function(entry) {
+    viewPaths.push(path.join(appPath.ROOT, entry));
+  });
+
 
 
 
