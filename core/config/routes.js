@@ -7,13 +7,8 @@ var routeHelper=rootRequire('core/lib/helpers/route');
 //  const userApp=Factory.getSubApp('user');
 // const forumApp=Factory.getSubApp('forum');
 
-var path_root = rootPath = Factory.getApp().get("PATH.ROOT");
+var path_root = __base;
 var url = require('url');
-var helper = Factory.core.getService('helpers', function(err, helper) {
-  if (err) throw err;
-
-  return 'dd';
-});
 
 // console.log(helper);
 module.exports = function(app) {
@@ -27,6 +22,33 @@ module.exports = function(app) {
   // });
 
   routeHelper.collectRoute(app);
+  app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+  });
+
+  if (process.env.NODE_ENV === 'development') {
+
+    app.use(function(err, req, res, next) {
+      res.status(err.status || 500);
+      res.render('error', {
+        message: err.message,
+        error: err
+      });
+    });
+  }
+
+  // production error handler
+  // no stacktraces leaked to user
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: {}
+    });
+  });
+
   return app;
 
 }

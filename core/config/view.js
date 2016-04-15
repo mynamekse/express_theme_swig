@@ -19,9 +19,9 @@ module.exports = function(app) {
     app.use(compression());
 
   }
-
+  app.use(express.static(path.join(__base, 'public')));
   var appPath = {
-    "ROOT": app.get("PATH.ROOT")
+    "ROOT": __base
 
   };
 
@@ -32,11 +32,11 @@ module.exports = function(app) {
       '/core/themes/materialize/user/views',
       '/core/themes/materialize/login/views'
     ],
-    'webbootstrap': ['/core/themes/webbootstrap','/core/themes/webbootstrap/layouts' ]
+    'webbootstrap': ['/core/themes/webbootstrap', '/core/themes/webbootstrap/layouts']
   }
   var viewPaths = []
 
-  themes.webbootstrap.forEach(function(entry) {
+  themes.materialize.forEach(function(entry) {
     viewPaths.push(path.join(appPath.ROOT, entry));
   });
 

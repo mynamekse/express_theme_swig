@@ -3,7 +3,7 @@ module.exports={
     var _data={
       title:'dddddddddddddd'
     }
-
-     res.render('login.index.html',{data:_data});
+    res.end('dddd');
+    //  res.render('login.index.html',{data:_data});
   }
 }
