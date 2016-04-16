@@ -19,11 +19,24 @@ var bodyParser = require('body-parser');
 // }));
 
 
+
+
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+var userApp = rootRequire('core/app/user');
 
-module.exports.set
+// function addApp(req,res,next) {
+//   console.log('dd'+ Date.now());
+//
+//   app.use(userApp);
+//   next();
+// }
+
+
+app.use(userApp);
+
+// module.exports.set
