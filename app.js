@@ -29,7 +29,7 @@ var appRootPath = app.get("PATH.ROOT");
 // app.use('/',web);
 require('./core/config/middleware');
 require('./core/config/view')(app);
-app=require('./core/config/routes')(app);
+// app=require('./core/config/routes')(app);
 
 
 

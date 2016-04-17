@@ -17,5 +17,5 @@ userApp.route('/ddd')
     res.send('Get a random book');
   })
 
-  // let view=rootRequire('core/config/view')(userApp);
+ let view=rootRequire('core/config/view')(userApp);
 module.exports=userApp;
