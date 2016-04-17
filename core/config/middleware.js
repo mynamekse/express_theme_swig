@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-var userApp = rootRequire('core/app/user');
+var pageApp = rootRequire('core/app/page');
 
 // function addApp(req,res,next) {
 //   console.log('dd'+ Date.now());
@@ -36,7 +36,6 @@ var userApp = rootRequire('core/app/user');
 //   next();
 // }
 
-
-app.use(userApp);
-
+app.use(pageApp);
+// module.exports.addLastMiddleware();
 // module.exports.set

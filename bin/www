@@ -4,7 +4,11 @@
  * Module dependencies.
  */
 // require('../api/services/factory');
+
+
 var app = require('../app');
+
+
 var debug = require('debug')('ExpressWebApplication_book:server');
 var http = require('http');
 let env=require(__base +'/core/config/main.config.js');
@@ -15,6 +19,7 @@ let env=require(__base +'/core/config/main.config.js');
 
 var port = normalizePort(env.port);
 app.set('port', port);
+
 
 
 
