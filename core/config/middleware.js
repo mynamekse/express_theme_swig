@@ -20,14 +20,13 @@ var bodyParser = require('body-parser');
 
 
 
-
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-var pageApp = rootRequire('core/app/page');
+// var pageApp = rootRequire('core/app/page');
 
 // function addApp(req,res,next) {
 //   console.log('dd'+ Date.now());
@@ -36,6 +35,6 @@ var pageApp = rootRequire('core/app/page');
 //   next();
 // }
 
-app.use(pageApp);
+
 // module.exports.addLastMiddleware();
 // module.exports.set

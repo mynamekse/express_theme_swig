@@ -12,18 +12,13 @@ var routeHelper=rootRequire('core/lib/helpers/route');
 
 // console.log(helper);
 module.exports = function(app) {
-  // var routes = fs.readdirSync(path_root + '/core/modules');
-  // routes.forEach(function(routeName) {
-  //   var route = Factory.core.getRoute(routeName);
-  //   if (typeof route !=='function'){
-  //     throw new Error('route  '+routeName +' not found ');
-  //   }
-  //   app.use(route);
+  app.get('/',function(req,res){
+    res.render('home');
+  });
+
+  // app.get('/login',function(req,res){
+  //   res.render('home');
   // });
 
-  routeHelper.collectRoute(app);
-
-
-  return app;
 
 }

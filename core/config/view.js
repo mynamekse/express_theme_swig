@@ -12,14 +12,10 @@
 
 
      if (process.env.NODE_ENV === 'development') {
-
          app.use(morgan('dev'));
          app.disable('view cache');
-
      } else {
-
          app.use(compression());
-
      }
 
      var appPath = {
@@ -29,11 +25,11 @@
 
      app.use(express.static(path.resolve(__base, "public")));
      var themes = {
-         'materialize': [
-             '/core/themes/materialize',
-             '/core/themes/materialize/layout',
-             '/core/themes/materialize/user/views',
-             '/core/themes/materialize/login/views'
+         'webmaterialize': [
+             '/core/themes/webmaterialize',
+             '/core/themes/webmaterialize/layouts',
+             '/core/themes/webmaterialize/user/views',
+             '/core/themes/webmaterialize/login/views'
          ],
          'webbootstrap': ['/core/themes/webbootstrap', '/core/themes/webbootstrap/layouts'],
          'webmaterialdst': [
@@ -45,7 +41,7 @@
      }
      var viewPaths = []
 
-     themes.webmaterialdst.forEach(function(entry) {
+     themes.webmaterialize.forEach(function(entry) {
          viewPaths.push(path.join(appPath.ROOT, entry));
      });
 
