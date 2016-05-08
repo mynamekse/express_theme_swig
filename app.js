@@ -19,7 +19,7 @@ require('./global');
 
   // var helpers=Factory.getService('helpers');
   // helpers.Path.root_path=__dirname;
-  var appRootPath = app.get("PATH.ROOT");
+
 
   rootRequire('./core/modules/boot')(app);
 
