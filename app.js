@@ -2,10 +2,18 @@ require('./api/services/factory');
 require('./global');
 var collection=rootRequire('./core/api/helpers/collection').collection();
 var path = require("path");
-
+var http = require('http');
 var express = require('express');
 var app = Factory.getApp();
 var web = require('./app/web');
+// web.set('port', 8080);
+// var server = http.createServer(web);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+// server.listen(8080);
 var admin =require('./app/admin')
 
 

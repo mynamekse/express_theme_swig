@@ -6,6 +6,7 @@ var collection = rootRequire('./core/api/helpers/collection').collection();
 var userRouter=require('./modules/user/routes');
 
 web.set("PATH.ROOT", __dirname);
+
 // web.use(function(req, res, next) {
 //   req.headers['if-none-match'] = 'no-match-for-this';
 //   next();

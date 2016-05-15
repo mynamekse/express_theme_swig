@@ -41,7 +41,7 @@ module.exports = function(app) {
     // path.join(appPath.ROOT, 'themes/materialize/modules/static/views')
 
   ]
-
+console.log(viewPaths);
 
   // viewPaths.push(path.join((appPath.ROOT, 'api/app/forums/views')));
 
