@@ -55,4 +55,32 @@ web.set("PATH.ROOT", __dirname);
 // });
 require('./config/view')(web);
 web.use(userRouter);
+
+web.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+if (process.env.NODE_ENV === 'development') {
+
+  web.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+web.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
+
 module.exports = web;

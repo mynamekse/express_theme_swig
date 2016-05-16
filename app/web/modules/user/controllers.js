@@ -1,7 +1,7 @@
 var authenController = {
     renderLogin: function(req, res) {
         var _data = {
-            page_title: 'abcd',
+            page_title: 'adddddddddddbcd',
             b2: 'abcdef'
         }
 
