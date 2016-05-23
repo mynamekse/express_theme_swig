@@ -5,44 +5,46 @@ var morgan = require('morgan');
 var compression = require('compression');
 var nunjucks = require('nunjucks');
 // app.set('views', path.join(__dirname, 'views'));
+process.env.NODE_ENV = 'ddd';
+var noCache = true;
 module.exports = function(app) {
 
 
-  if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
-    app.disable('view cache');
+    if (process.env.NODE_ENV === 'development') {
+        app.use(morgan('dev'));
+        app.disable('view cache');
+        noCache = true;
 
-  } else {
+    } else {
 
-    app.use(compression());
+        app.use(compression());
+        noCache = false;
+    }
 
-  }
+    var appPath = {
+        "ROOT": app.get("PATH.ROOT")
 
-  var appPath = {
-    "ROOT": app.get("PATH.ROOT")
+    };
+    var viewPaths = [
+        path.join(__base, 'themes/web/Materialize'),
+        path.join(__base, 'themes/web/Materialize/modules/user/views'),
+        path.join(__base, 'themes/web/Materialize/modules/login/views')
 
-  };
-  var viewPaths = [
-    path.join(__base, 'themes/web/Materialize'),
-    // path.join(appPath.ROOT, 'themes/Materialize/user/views'),
-    // path.join(appPath.ROOT, 'themes/Materialize/login/views')
-
-  ]
-
-
-
-  // viewPaths.push(path.join((appPath.ROOT, 'api/app/forums/views')));
+    ]
 
 
+    // viewPaths.push(path.join((appPath.ROOT, 'api/app/forums/views')));
 
-  app.set('views', viewPaths);
-  app.set('view engine', 'html');
 
-  nunjucks.configure(viewPaths, {
-    autoescape: true,
-    express: app,
-    noCache: true
-  });
+
+    app.set('views', viewPaths);
+    app.set('view engine', 'html');
+
+    nunjucks.configure(viewPaths, {
+        autoescape: true,
+        express: app,
+        noCache: noCache
+    });
 
 }
 

@@ -5,15 +5,11 @@ var path = require("path");
 var http = require('http');
 var express = require('express');
 var app = Factory.getApp();
-var web = require('./app/web');
+process.env.NODE_ENV ='production';
+// var web = require('./app/web');
 
-// web.set('port', 8080);
-// var server = http.createServer(web);
-//
-//
-//
-// server.listen(8080);
-var admin =require('./app/admin')
+
+// var admin =require('./app/admin')
 
 
 collection.setCollection('app',app);
@@ -32,8 +28,18 @@ var appRootPath = app.get("PATH.ROOT");
 app.use(express.static(path.join(appRootPath, 'public')));
 
 require('./core/config/middleware');
-// require('./core/config/view')(app);
-app.use('/',web);
+require('./core/config/view')(app);
+// app.use('/',web);
+app.get('/hello',function(req,res){
+  var _data = {
+      page_title: 'adddddddddddbcd',
+      b2: Date.now()
+  }
+
+  res.render('login.index.html', {
+      data: _data
+  });
+});
 // app.use('/admin',admin);
 
 // require('./core/config/routes')(app);

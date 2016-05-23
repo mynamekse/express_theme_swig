@@ -34,10 +34,10 @@ module.exports = function(app) {
   // ]
 
   var viewPaths = [
-    path.join(appPath.ROOT, 'themes/materialize'),
-    path.join(appPath.ROOT, 'themes/materialize/layouts'),
+    path.join(appPath.ROOT, 'themes/web/Materialize'),
+    path.join(appPath.ROOT, 'themes/web/Materialize/layouts'),
     // path.join(appPath.ROOT, 'themes/Materialize/user/views'),
-    path.join(appPath.ROOT, 'themes/materialize/modules/user/views'),
+    path.join(appPath.ROOT, 'themes/web/Materialize/modules/user/views'),
     // path.join(appPath.ROOT, 'themes/materialize/modules/static/views')
 
   ]
