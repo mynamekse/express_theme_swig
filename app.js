@@ -40,6 +40,17 @@ app.get('/hello',function(req,res){
       data: _data
   });
 });
+
+app.get('/',function(req,res){
+  var _data = {
+      page_title: 'adddddddddddbcd',
+      b2: Date.now()
+  }
+
+  res.render('login.index.html', {
+      data: _data
+  });
+});
 // app.use('/admin',admin);
 
 // require('./core/config/routes')(app);
